@@ -1,14 +1,19 @@
 var letter = require('./letter.js');
 
-function Word(letterArr, guessed) {
-    this.letterArr = letterArr;
-    this.guessed = guessed;
+function Word(chosenWordArr) {
+    this.chosenWordArr = chosenWordArr;
+    this.letterArr = [];
 }
 Word.prototype.wordString = function () {
     this.letterArr.forEach(element => {
-        
+        element.charDisplay();
     });
 };
+Word.prototype.wordString = function (chr) {
+    chr.inWord();
+};
+
+module.exports = Word;
 
 
 // * **Word.js**: Contains a constructor, Word that depends on the Letter constructor. 

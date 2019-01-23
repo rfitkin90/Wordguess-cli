@@ -1,24 +1,25 @@
-function Letter(char, guessed) {
-    this.char = char;
-    this.guessed = guessed;
+function Letter(chr) {
+    this.char = chr;
+    this.guessed = false;
 }
 Letter.prototype.charDisplay = function () {
     // display letter as a letter if guess, or an underscore if not guessed
-    if (this.guessed) {
+    if (this.char = ' ') {
+        return ' ';
+    } else if (this.guessed) {
         return char;
     } else {
         return '_';
     }
 };
-Letter.prototype.inWord = function () {
-    // return true on correct guess; false on incorrect guess
-    if (chosenWordArr.contains(char)) {
-        return true;
-    } else {
-        return false;
+Letter.prototype.inWord = function (chr) {
+    // switch Letter.guessed to true if chr is in chosenWordArr
+    if (chosenWordArr.contains(chr)) {
+        return this.guessed = true;
     }
 };
 
+module.exports = Letter;
 
 // * **Letter.js**: Contains a constructor, Letter. This constructor should be able to either display 
 // an underlying character or a blank placeholder (such as an underscore), depending on whether or not the 
