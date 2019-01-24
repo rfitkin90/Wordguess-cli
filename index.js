@@ -1,24 +1,25 @@
-var word = require('./word.js');
+var Word = require('./word.js');
 var inquirer = require('inquirer');
 
 var possibleWordsArr = ['Red', 'Orange', 'Blue', 'Light Green'];
 var RNG = Math.floor(Math.random() * possibleWordsArr.length);
+console.log(possibleWordsArr[RNG]);
 
-var chosenWord = new Word(possibleWordsArr[RNG]);
+// var chosenWord = new Word(possibleWordsArr[RNG]);
+// console.log(chosenWord);
+// inquirer
+//     .prompt([
+//         {
+//             type: "input",
+//             message: "Guess a letter!",
+//             name: "guess"
+//         }
+//     ])
+//     .then(answers => {
 
-inquirer
-    .prompt([
-        {
-            type: "input",
-            message: "Guess a letter!",
-            name: "guess"
-        }
-    ])
-    .then(answers => {
 
-
-    });
-;
+//     });
+// ;
 // * **index.js**: The file containing the logic for the course of the game, which depends on `Word.js` and:
 
 //   * Randomly selects a word and uses the `Word` constructor to store it

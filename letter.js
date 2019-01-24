@@ -17,12 +17,12 @@ Letter.prototype.inWord = function (chr) {
     this.guessed = chosenWordArr.includes(chr)
     return this.guessed;
 };
-var l = new Letter("s");
+// var l = new Letter("s");
 
-console.log(l.chrDisplay());
-l.guessed = true;
-console.log(l)
-console.log(l.chrDisplay());
+// console.log(l.chrDisplay());
+// l.guessed = true;
+// console.log(l)
+// console.log(l.chrDisplay());
 module.exports = Letter;
 
 // * **Letter.js**: Contains a constructor, Letter. This constructor should be able to either display 

@@ -1,9 +1,9 @@
-var letter = require('./letter.js');
+var Letter = require('./letter.js');
 
-function Word(chosenWord) {
+function Word(word) {
     this.chosenWord = [];
-    chosenWord.split('').forEach(function(char) {
-        this.chosenWord.push(new letter(char))
+    word.split('').forEach(function(chr) {
+        this.chosenWord.push(new Letter(chr))
     });
 }
 Word.prototype.wordString = function () {
@@ -16,6 +16,10 @@ Word.prototype.wordString = function (chr) {
 };
 
 module.exports = Word;
+
+var hamburger = 'Hamburger';
+var newBurg = new Word(hamburger);
+console.log(newBurg);
 
 
 // * **Word.js**: Contains a constructor, Word that depends on the Letter constructor. 
