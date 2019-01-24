@@ -1,12 +1,14 @@
 var letter = require('./letter.js');
 
-function Word(chosenWordArr) {
-    this.chosenWordArr = chosenWordArr;
-    this.letterArr = [];
+function Word(chosenWord) {
+    this.chosenWord = [];
+    chosenWord.split('').forEach(function(char) {
+        this.chosenWord.push(new letter(char))
+    });
 }
 Word.prototype.wordString = function () {
-    this.letterArr.forEach(element => {
-        element.charDisplay();
+    this.chosenWord.forEach(elem => {
+        elem.chrDisplay();
     });
 };
 Word.prototype.wordString = function (chr) {
