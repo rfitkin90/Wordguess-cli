@@ -3,7 +3,7 @@ function Letter(chr) {
     this.guessed = false;
 }
 Letter.prototype.chrDisplay = function () {
-    // display letter as a letter if guess, or an underscore if not guessed
+    // display letter as a letter if guessed, or an underscore if not guessed
     if (this.chr === ' ') {
         return ' ';
     } else if (this.guessed) {
