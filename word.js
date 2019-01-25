@@ -11,8 +11,10 @@ Word.prototype.wordString = function () {
         elem.chrDisplay();
     });
 };
-Word.prototype.wordString = function (chr) {
-    chr.inWord();
+Word.prototype.checkLetters = function (chr) {
+    this.chosenWordArr.forEach(elem => {
+        elem.inWord(chr);
+    });
 };
 
 module.exports = Word;

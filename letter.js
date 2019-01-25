@@ -14,8 +14,10 @@ Letter.prototype.chrDisplay = function () {
 };
 Letter.prototype.inWord = function (chr) {
     // switch Letter.guessed to true if chr is in chosenWordArr
-    this.guessed = chosenWordArr.includes(chr)
-    return this.guessed;
+    if (!this.guessed) {
+        this.guessed = Boolean(this.chr === chr);
+        return this.guessed;
+    }
 };
 // var l = new Letter("s");
 

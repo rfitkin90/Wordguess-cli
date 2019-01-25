@@ -11,18 +11,19 @@ var chosenWord = new Word(possibleWordsArr[RNG]);
 console.log(chosenWord);
 
 // display the chosen word on screen
-var chosenWordDisplay = [];
+var wordDisplayArr = [];
 for (var i = 0; i < chosenWord.chosenWordArr.length; i++) {
-    chosenWordDisplay.push(chosenWord.chosenWordArr[i].chrDisplay());
+    wordDisplayArr.push(chosenWord.chosenWordArr[i].chrDisplay());
 }
-console.log(chosenWordDisplay.join(' '));
+var wordDisplay = wordDisplayArr.join(' ');
+console.log(wordDisplay);
 
 // array to store previous guesses
 var prevGuessesArr = [];
 
+
 // recursive guess letter function
 guessLetter("Guess a letter!");
-
 function guessLetter(displayMessage) {
     inquirer
         .prompt([
@@ -43,7 +44,16 @@ function guessLetter(displayMessage) {
 
                 // if user makes a legitimate guess
             } else {
-                
+                chosenWord.checkLetters();
+                var wordDisplayArr = [];
+                for (var i = 0; i < chosenWord.chosenWordArr.length; i++) {
+                    wordDisplayArr.push(chosenWord.chosenWordArr[i].chrDisplay());
+                }
+                var wordDisplay = wordDisplayArr.join(' ');
+                console.log(wordDisplay);
+                prevGuessesArr.push(answers.guess.toLowerCase());
+                console.log(`Previous guesses: ${prevGuessesArr.join(', ')}`);
+                guessLetter("Guess a letter!");
             }
 
         });
