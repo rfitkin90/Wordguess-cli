@@ -43,37 +43,47 @@ function guessLetter(displayMessage) {
                 chosenWord.checkLetters(answers.guess);
 
                 // display the word on screen with underscores/letters
-                displayWord();
+                // displayWord();
 
                 // push guess to prevGuessesArr and display it on screen
                 prevGuessesArr.push(answers.guess.toLowerCase());
-                console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`);
+                // console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`);
 
                 // if the guess was correct
                 if (checkGuess(answers.guess.toLowerCase())) {
                     // if user wins
                     if (testWinCondition()) {
-                        console.log('CORRECT!!!\n'.green);
+                        console.log('\n\n======================================');
+                        console.log('\nCORRECT!!!'.green);
+                        displayWord();
+                        console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`.cyan);
 
                         // makes non-final correct guess
                     } else {
-                        console.log('CORRECT!!!\n'.green);
+                        console.log('\n\n======================================');
+                        console.log('\nCORRECT!!!'.green);
+                        displayWord();
+                        console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`.cyan);
                         // initiate recursion
                         guessLetter("Guess a letter!");
                     }
 
                     // if the guess was incorrect
                 } else {
-                    console.log('INCORRECT!!!\n'.red);
+                    console.log('\n\n======================================');
+                    console.log('\nINCORRECT!!!'.red);
+                    console.log(`\n${lives} guesses remaining!`.yellow);
                     // update lives
                     lives--;
                     // if user still has more lives
                     if (lives > 0) {
-                        
+                        displayWord();
+                        console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`.cyan);
+                        guessLetter("Guess a letter!");
 
                         // if user loses
                     } else {
-
+                        
                     }
                 }
 
