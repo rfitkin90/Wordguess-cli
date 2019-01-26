@@ -1,6 +1,7 @@
 function Letter(chr) {
     this.chr = chr;
     this.guessed = false;
+    if (this.chr === ' ') this.guessed = true;
 }
 Letter.prototype.chrDisplay = function () {
     // display letter as a letter if guessed, or an underscore if not guessed
@@ -15,7 +16,7 @@ Letter.prototype.chrDisplay = function () {
 Letter.prototype.inWord = function (chr) {
     // switch Letter.guessed to true if chr is in chosenWordArr
     if (!this.guessed) {
-        this.guessed = Boolean(this.chr === chr);
+        this.guessed = Boolean(this.chr.toLowerCase() === chr.toLowerCase());
         return this.guessed;
     }
 };
