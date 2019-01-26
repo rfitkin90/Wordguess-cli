@@ -3,16 +3,21 @@ var inquirer = require('inquirer');
 var colors = require('colors');
 
 // randomly select word
-var possibleWordsArr = ['Dark Red', 'Light Orange', 'Neon Blue', 'Light Green'];
+var possibleWordsArr = [
+    'Abyssinian', 'Aegean', 'American Bobtail', 'American Curl', 'American Polydactyl',
+    'American Shorthair', 'American Wirehair', 'ArabianMau', 'Australian Mist', 'Balinese',
+    'Bambino', 'Bengal', 'Birman', 'Burmese', 'Exotic Shorthair',
+    'Maine Coon', 'Munchkin', 'Scottish Fold', 'Siamese', 'Sphynx'
+];
 var RNG = Math.floor(Math.random() * possibleWordsArr.length);
 // instantiate the chosen word from the word constructor
 var chosenWord = new Word(possibleWordsArr[RNG]);
 // array to store previous guesses
 var prevGuessesArr = [];
 // create lives variable
-var lives = 8;
+var lives = 13;
 
-
+console.log('\nGuess the correct cat breed!'.magenta);
 
 // display the chosen word on screen
 displayWord();
@@ -53,14 +58,15 @@ function guessLetter(displayMessage) {
                 if (checkGuess(answers.guess.toLowerCase())) {
                     // if user wins
                     if (testWinCondition()) {
-                        console.log('\n\n======================================');
+                        console.log('\n\n======================================'.magenta);
                         console.log('\nCORRECT!!!'.green);
                         displayWord();
                         console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`.cyan);
+                        resetGame('win');
 
                         // makes non-final correct guess
                     } else {
-                        console.log('\n\n======================================');
+                        console.log('\n\n======================================'.magenta);
                         console.log('\nCORRECT!!!'.green);
                         displayWord();
                         console.log(`Previous guesses: ${prevGuessesArr.join(', ')}\n`.cyan);
@@ -70,7 +76,7 @@ function guessLetter(displayMessage) {
 
                     // if the guess was incorrect
                 } else {
-                    console.log('\n\n======================================');
+                    console.log('\n\n======================================'.magenta);
                     console.log('\nINCORRECT!!!'.red);
                     console.log(`\n${lives} guesses remaining!`.yellow);
                     // update lives
@@ -83,12 +89,13 @@ function guessLetter(displayMessage) {
 
                         // if user loses
                     } else {
-                        
+                        console.log('\n\n======================================'.magenta);
+                        console.log('\nINCORRECT!!!'.green);
+                        displayWord();
+                        resetGame('lose');
                     }
                 }
-
             }
-
         });
     ;
 };
@@ -115,6 +122,30 @@ function testWinCondition() {
         if (!chosenWord.chosenWordArr[i].guessed) return false;
     }
     return true;
+}
+
+function resetGame(outcome) {
+    possibleWordsArr.splice(RNG, 1);
+    if (possibleWordsArr.length === 0) {
+        possibleWordsArr = [
+            'Abyssinian', 'Aegean', 'American Bobtail', 'American Curl', 'American Polydactyl',
+            'American Shorthair', 'American Wirehair', 'ArabianMau', 'Australian Mist', 'Balinese',
+            'Bambino', 'Bengal', 'Birman', 'Burmese', 'Exotic Shorthair',
+            'Maine Coon', 'Munchkin', 'Scottish Fold', 'Siamese', 'Sphynx'
+        ];
+    }
+    RNG = Math.floor(Math.random() * possibleWordsArr.length);
+    chosenWord = new Word(possibleWordsArr[RNG]);
+    prevGuessesArr = [];
+    lives = 8;
+    console.log('\n\n======================================\n'.magenta);
+    if (outcome === 'win') {
+        console.log(`You ${outcome}! Next word.`.rainbow);
+    } else {
+        console.log(`You ${outcome}! Next word.`.red);
+    }
+    displayWord();
+    guessLetter("Guess a letter!");
 }
 
 // * **index.js**: The file containing the logic for the course of the game, which depends on `Word.js` and:
