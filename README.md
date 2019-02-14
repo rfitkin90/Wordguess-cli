@@ -6,7 +6,7 @@
 1. After downloading the repository, navigate to repository folder in your terminal and type the following commands:
     npm install inquirer
 
-    ![InstallInquirer](./images/install-inquirer.png)
+    ![InstallInquirer](https://puu.sh/CM3gj.png)
     npm install colors
 
     ![InstallColors](./images/install-colors.png)
