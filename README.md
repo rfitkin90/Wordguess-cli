@@ -1,6 +1,8 @@
 # Wordguess-cli
 `Cat Breed Hangman`
 
+A simple hangman game played in the command line interface.
+
 ### User Instructions
 
 1. After downloading the repository, navigate to repository folder in your terminal and type the following commands:
